@@ -40,7 +40,7 @@ EFS<br>
 
 ```
 名前：my-efs<br>
-VPC：my-vpc<br>
+VPC：my-vpc-01<br>
 ```
 
 ## マウントターゲットを確認・作成する
