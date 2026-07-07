@@ -35,8 +35,10 @@ EC2<br>
 ↓<br>
 イメージを作成<br>
 
-イメージ名：backup-bastion-server-20260611
+```
+イメージ名：backup-bastion-server-20260611<br>
 イメージの説明：Bastion server backup before configuration change
+```
 
 再起動はチェック推奨　<br>
 整合性が取れるから
@@ -48,8 +50,6 @@ EC2<br>
 スナップショットも確認する
 
 AMIを作成すると、裏側でEBSスナップショットも作成される。
-
-確認場所
 
 EC2<br>
 ↓<br>
