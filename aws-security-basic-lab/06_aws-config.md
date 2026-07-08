@@ -87,12 +87,12 @@ NOT_APPLICABLE	評価対象がない、または該当しない
 
 
 例えば、踏み台用SGのSSHを一時的に以下に
-
+```
 SSH / TCP / 22 / 0.0.0.0/0
-
-すると、restricted-ssh が NON_COMPLIANT になることを確認できます。
+```
+restricted-ssh が NON_COMPLIANT になることを確認。
 
 確認後、すぐ戻す
-
+```
 SSH / TCP / 22 / マイIP
-
+```
