@@ -181,3 +181,20 @@ INSUFFICIENT_DATA	まだデータ不足
 作成直後は INSUFFICIENT_DATA になることがある。
 
 数分待つと OK になることが多い
+
+## アラーム機能の検証
+あえて閾値の低いアラームを作成する
+```
+アラーム名：security-lab-bastion-high-cpu-test
+```
+設定
+```
+Metric: CPUUtilization
+Statistic: Average
+Period: 1 minutes
+Threshold: >= 1
+Datapoints to alarm: 1 of 1
+```
+踏み台サーバーにつける
+
+実際にアラームがメールで来ているか確認
