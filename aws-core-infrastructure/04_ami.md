@@ -36,7 +36,7 @@ EC2<br>
 イメージを作成<br>
 
 ```
-イメージ名：backup-bastion-server-20260611<br>
+イメージ名：backup-bastion-server-20260611
 イメージの説明：Bastion server backup before configuration change
 ```
 
