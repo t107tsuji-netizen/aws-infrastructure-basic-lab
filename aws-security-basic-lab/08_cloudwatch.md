@@ -198,3 +198,116 @@ Datapoints to alarm: 1 of 1
 踏み台サーバーにつける
 
 実際にアラームがメールで来ているか確認
+
+# CloudWatch Agentを入れメモリ使用率とディスク使用率を見れるようにする
+
+## CloudWatch Agentをインストールする
+
+各EC2にログインし、CloudWatch Agentをインストールする。
+
+Amazon Linux 2023の場合は、以下のコマンドでインストールする。
+
+```bash
+sudo dnf install -y amazon-cloudwatch-agent
+```
+
+
+---
+
+## CloudWatch Agentの設定ファイルを作成する
+
+CloudWatch Agentの設定ファイルを作成する。
+
+```bash
+sudo vi /opt/aws/amazon-cloudwatch-agent/bin/config.json
+```
+
+以下の内容を記述する。
+
+```json
+{
+  "agent": {
+    "metrics_collection_interval": 60,
+    "run_as_user": "root"
+  },
+  "metrics": {
+    "namespace": "CWAgent",
+    "append_dimensions": {
+      "InstanceId": "${aws:InstanceId}"
+    },
+    "metrics_collected": {
+      "mem": {
+        "measurement": [
+          "mem_used_percent"
+        ]
+      },
+      "disk": {
+        "measurement": [
+          "used_percent"
+        ],
+        "resources": [
+          "/"
+        ]
+      }
+    }
+  }
+}
+```
+
+`vi` で編集している場合は、以下で保存して終了する。
+
+```text
+Esc
+:wq
+```
+
+---
+
+## CloudWatch Agentを起動する
+
+作成した設定ファイルを読み込ませ、CloudWatch Agentを起動する。
+
+```bash
+sudo /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl \
+-a fetch-config \
+-m ec2 \
+-c file:/opt/aws/amazon-cloudwatch-agent/bin/config.json \
+-s
+```
+
+CloudWatch Agentの状態を確認する。
+
+```bash
+sudo /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl -a status
+```
+
+以下のように `running` と表示されれば起動成功である。
+
+```text
+"status": "running"
+```
+
+---
+
+##  CloudWatchでメモリ・ディスク使用率を確認する
+
+AWSコンソールでCloudWatchメトリクスを確認する。
+
+```text
+CloudWatch
+↓
+メトリクス
+↓
+すべてのメトリクス
+↓
+CWAgent
+```
+
+以下のメトリクスが表示されていれば、CloudWatch Agentによるメトリクス収集は成功である。
+
+```text
+mem_used_percent
+disk_used_percent
+```
+
+メトリクスがすぐに表示されない場合は、数分待ってから再度確認する。
