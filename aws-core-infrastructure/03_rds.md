@@ -136,7 +136,7 @@ private-rt を選択<br>
 
 踏み台から内部LinuxへSSH<br>
 ```
-ssh -i my-ec2-key.pem ec2-user@10.0.2.96<br>
+ssh -i my-ec2-key.pem ec2-user@<内部サーバーのプライベートIP><br>
 ```
 インターネットへ出られるか確認<br>
 ```
