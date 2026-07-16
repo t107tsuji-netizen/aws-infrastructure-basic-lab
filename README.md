@@ -95,8 +95,8 @@ aws-infrastructure-basic-lab/
 │   │
 │   └── core-infrastructure/
 │       ├── 01_network-ec2.md
-│       ├── 02_efs.md
-│       ├── 03_rds.md
+│       ├── 02_rds.md
+│       ├── 03_efs.md
 │       ├── 04_ami.md
 │       ├── 05_alb.md
 │       └── 06_troubleshooting.md
