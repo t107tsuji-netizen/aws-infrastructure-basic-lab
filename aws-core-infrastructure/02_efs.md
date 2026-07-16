@@ -24,7 +24,7 @@ EC2
 ```text
 セキュリティグループ名: efs-sg
 説明: Allow NFS from Linux EC2
-VPC: <vpc-name>
+VPC: <my-vpc-01>
 ```
 
 インバウンドルールを追加する。
@@ -64,8 +64,8 @@ EFS
 設定例は以下である。
 
 ```text
-名前: <efs-name>
-VPC: <vpc-name>
+名前: <my-efs>
+VPC: <my-vpc-01>
 ```
 
 作成後、EFSのファイルシステムIDを確認する。
@@ -91,7 +91,7 @@ EFS
 ↓
 ファイルシステム
 ↓
-<efs-name> を選択
+<my-efs> を選択
 ↓
 ネットワーク
 ```
@@ -115,11 +115,9 @@ EC2
 ↓
 踏み台サーバーを選択
 ↓
-接続
+TeraTermで接続
 ↓
-EC2 Instance Connect
-↓
-接続
+ログイン
 ```
 
 ログイン後、EFS用ツールをインストールする。
@@ -175,7 +173,7 @@ hello from bastion
 踏み台サーバーから内部LinuxへSSH接続する。
 
 ```bash
-ssh -i <key-file>.pem ec2-user@<private-linux-private-ip>
+ssh -i my-EC2-Key.pem ec2-user@<private-linux-private-ip>
 ```
 
 ログイン後、プロンプトが内部Linux側に切り替わる。
