@@ -199,7 +199,7 @@ Datapoints to alarm: 1 of 1
 
 実際にアラームがメールで来ているか確認
 
-# CloudWatch Agentを入れメモリ使用率とディスク使用率を見れるようにする
+# 3.CloudWatch Agentでメモリ/ディスク使用率を追加
 
 ## CloudWatch Agentをインストールする
 
