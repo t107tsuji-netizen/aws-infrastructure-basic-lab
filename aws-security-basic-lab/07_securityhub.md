@@ -1,4 +1,4 @@
-# 13.Security Hubの有効化
+# 1.Security Hubの有効化
 Security Hubは、AWS環境のセキュリティ状態を集約して確認するサービス<br>
 今回は主に以下を目的に使う
 ```
